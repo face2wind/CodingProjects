@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{7ec22ac6-6266-4061-8000-01f305fd3ba2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\manager">
+      <UniqueIdentifier>{2d8ff98d-f60a-44b0-b1ed-4e3b6cfbde28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\modules">
+      <UniqueIdentifier>{b327bc0a-6e0c-4b4c-92ad-1a070089e9e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\proto">
+      <UniqueIdentifier>{1a7569d8-6dc4-4ea2-8db9-907b2da1372b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\user">
+      <UniqueIdentifier>{522dfa8b-6217-4316-90f6-ee28f1a154c4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\server_cpp\src\server.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\server_cpp\src\manager\message_manager.cpp">
+      <Filter>src\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\server_cpp\src\manager\player_manager.cpp">
+      <Filter>src\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\server_cpp\src\modules\server_module.cpp">
+      <Filter>src\modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\server_cpp\src\proto\player.pb.cc">
+      <Filter>src\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\server_cpp\src\user\player.cpp">
+      <Filter>src\user</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\server_cpp\src\proto\chat.pb.cc">
+      <Filter>src\proto</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\server_cpp\src\manager\message_manager.hpp">
+      <Filter>src\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server_cpp\src\manager\player_manager.hpp">
+      <Filter>src\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server_cpp\src\modules\server_module.hpp">
+      <Filter>src\modules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server_cpp\src\proto\player.pb.h">
+      <Filter>src\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server_cpp\src\user\player.hpp">
+      <Filter>src\user</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\server_cpp\src\proto\chat.pb.h">
+      <Filter>src\proto</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

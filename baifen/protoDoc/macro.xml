@@ -1,0 +1,18 @@
+<xml>
+	<macro name="RoomInfo" desc="房间信息">
+			<property name="roomID" type="int32" desc="房间号"/>
+			<property name="lockType" type="int8" desc="加锁类型（0无锁，1需要密码，2一律不准进入）"/>
+			<property name="playerList" type="array" desc="玩家列表">
+				<property name="playerID" type="int32" desc="玩家ID"/>
+				<property name="playerName" type="string" desc="玩家名"/>
+				<property name="sitID" type="int8" desc="座位ID（0-3）"/>
+				<property name="isOwner" type="int8" desc="是否房主（1是，0否）"/>
+			</property>
+	</macro>
+	
+	<macro name="PokerInfo" desc="扑克牌信息">
+			<property name="color" type="int8" desc="花色（1-4，砖块、花、红桃、黑桃）"/>
+			<property name="value" type="int8" desc="牌值（1-13）"/>
+	</macro>
+	
+</xml>

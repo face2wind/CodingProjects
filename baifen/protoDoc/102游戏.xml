@@ -1,0 +1,50 @@
+<xml>
+  <protoList id="102" desc="游戏逻辑"/>
+
+  <proto id="10200" desc="游戏状态">
+    <c2s>
+    </c2s>
+    <s2c>
+      <property name="gameState" type="int16" desc="游戏状态，0 结束或未开始，1 进行中"/>
+    </s2c>
+  </proto>
+
+  <proto id="10201" desc="请求开始游戏">
+    <c2s>
+    </c2s>
+    <s2c>
+      <property name="result" type="int16" desc="错误码"/>
+    </s2c>
+  </proto>
+
+  <proto id="10202" desc="发牌、更新当前牌面信息">
+    <c2s>
+    </c2s>
+    <s2c>
+      <property name="roleIndex" type="int8" desc="自己的下标"/>
+      <property name="nextTurnIndex" type="int8" desc="下一个出牌的玩家下标"/>
+      <property name="pokerNumList" type="array" desc="所有人手上的牌个数">
+	<property name="pokerNum" type="int8" desc="手上发的牌个数"/>
+      </property>
+      <property name="pokerList" type="array" desc="自己手上的牌">
+	<property name="pInfo" type="PokerInfo" desc="扑克牌信息"/>
+      </property>
+    </s2c>
+  </proto>
+
+  <proto id="10203" desc="出牌">
+    <c2s>
+      <property name="pokerList" type="array" desc="出牌列表">
+	<property name="pInfo" type="PokerInfo" desc="扑克牌信息"/>
+      </property>
+    </c2s>
+    <s2c>
+      <property name="curTurnIndex" type="int8" desc="出牌的玩家下标"/>
+      <property name="nextTurnIndex" type="int8" desc="下一个出牌的玩家下标"/>
+      <property name="pokerList" type="array" desc="出牌列表">
+	<property name="pInfo" type="PokerInfo" desc="扑克牌信息"/>
+      </property>
+    </s2c>
+  </proto>
+  
+</xml>

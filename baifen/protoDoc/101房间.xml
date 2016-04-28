@@ -1,0 +1,58 @@
+<xml>
+    <protoList id="101" desc="房间模块"/>
+
+    <proto id="10100" desc="房间列表">
+        <c2s>
+			<property name="pageNum" type="int8" desc="页数"/>
+        </c2s>
+        <s2c>
+			<property name="pageNum" type="int8" desc="页数"/>
+			<property name="maxPageNum" type="int8" desc="最大页数"/>
+			<property name="roomList" type="array" desc="房间列表">
+				<property name="roomMsg" type="RoomInfo" desc="房间信息"/>
+		      </property>
+        </s2c>
+    </proto>
+    
+    <proto id="10101" desc="加入房间">
+        <c2s>
+			<property name="roomID" type="int32" desc="房间号"/>
+			<property name="sitID" type="int8" desc="座位ID（0-3）"/>
+			<property name="passwd" type="string" desc="房间密码"/>
+        </c2s>
+        <s2c>
+			<property name="result" type="int16" desc="错误码"/>
+			<property name="roomID" type="int32" desc="房间号"/>
+        </s2c>
+    </proto>
+    
+    <proto id="10102" desc="建房间">
+        <c2s>
+			<property name="lockType" type="int8" desc="加锁类型（0无锁，1需要密码，2一律不准进入）"/>
+			<property name="passwd" type="string" desc="房间密码"/>
+        </c2s>
+        <s2c>
+			<property name="result" type="int16" desc="错误码"/>
+			<property name="roomID" type="int32" desc="房间号"/>
+        </s2c>
+    </proto>
+    
+    <proto id="10103" desc="踢出、自己退出房间">
+        <c2s>
+			<property name="roomID" type="int32" desc="房间号"/>
+			<property name="sitID" type="int8" desc="座位ID（0-3）"/>
+        </c2s>
+        <s2c>
+			<property name="result" type="int16" desc="错误码"/>
+			<property name="sitID" type="int8" desc="座位ID（0-3）"/>
+        </s2c>
+    </proto>
+    
+    <proto id="10104" desc="房间信息更新">
+        <c2s>
+        </c2s>
+        <s2c>
+			<property name="roomInfo" type="RoomInfo" desc="房间信息"/>
+        </s2c>
+    </proto>
+</xml>

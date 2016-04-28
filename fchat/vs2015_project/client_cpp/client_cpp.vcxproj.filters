@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{4104f771-63ba-4aaf-b52b-af41172755a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\manager">
+      <UniqueIdentifier>{095ed132-bfa2-4ab0-bea7-6195b32af205}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\modules">
+      <UniqueIdentifier>{81e0a708-3d03-47bc-9c96-ba6f9d27484f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\proto">
+      <UniqueIdentifier>{ff628779-cd6b-4e34-8ce9-9550e2c4bce2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\client_cpp\src\client.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\client_cpp\src\proto\player.pb.cc">
+      <Filter>src\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\client_cpp\src\modules\client_module.cpp">
+      <Filter>src\modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\client_cpp\src\manager\message_manager.cpp">
+      <Filter>src\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\client_cpp\src\manager\player_list_manager.cpp">
+      <Filter>src\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\client_cpp\src\manager\cli_view_manager.cpp">
+      <Filter>src\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\client_cpp\src\proto\chat.pb.cc">
+      <Filter>src\proto</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\client_cpp\src\proto\player.pb.h">
+      <Filter>src\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\client_cpp\src\modules\client_module.hpp">
+      <Filter>src\modules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\client_cpp\src\manager\message_manager.hpp">
+      <Filter>src\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\client_cpp\src\manager\player_list_manager.hpp">
+      <Filter>src\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\client_cpp\src\manager\cli_view_manager.hpp">
+      <Filter>src\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\client_cpp\src\proto\chat.pb.h">
+      <Filter>src\proto</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

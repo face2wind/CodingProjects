@@ -1,0 +1,43 @@
+<xml>
+    <protoList id="100" desc="登录相关"/>
+
+    <proto id="10000" desc="心跳包">
+        <c2s>
+			<property name="timeStamp" type="int32" desc="当前时间戳"/>
+        </c2s>
+        <s2c>
+			<property name="timeStamp" type="int32" desc="当前时间戳"/>
+        </s2c>
+    </proto>
+
+    <proto id="10001" desc="帐号查询">
+        <c2s>
+			<property name="loginName" type="string" desc="登录名"/>
+        </c2s>
+        <s2c>
+			<property name="accountExist" type="int8" desc="帐号是否已存在，1 存在，0 不存在"/>
+        </s2c>
+    </proto>
+
+    <proto id="10002" desc="创建帐号">
+        <c2s>
+			<property name="loginName" type="string" desc="登录名"/>
+			<property name="password" type="string" desc="登录密码"/>
+        </c2s>
+        <s2c>
+			<property name="errCode" type="int16" desc="错误码"/>
+        </s2c>
+    </proto>
+
+    <proto id="10003" desc="登录协议">
+        <c2s>
+			<property name="loginName" type="string" desc="登录名"/>
+			<property name="password" type="string" desc="登录密码"/>
+        </c2s>
+        <s2c>
+			<property name="errCode" type="int16" desc="错误码"/>
+			<property name="id" type="int32" desc="主角ID"/>
+			<property name="name" type="string" desc="主角名"/>
+        </s2c>
+    </proto>
+</xml>
