@@ -136,7 +136,8 @@ class ServerTask : public IThreadTask
     cout<<"listen result : "<< accepter1.Listen(9999)<<endl;
   }
 };
-int main()
+
+int thread_main()
 {
   Thread t;
   t.Run(new ServerTask());
@@ -149,5 +150,7 @@ int main()
 
   t.Join();
   cout<<"end ......"<<endl;
+
+  return 0;
 }
 

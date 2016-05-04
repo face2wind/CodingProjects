@@ -19,7 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\network_demo.cpp" />
+    <ClCompile Include="..\src\thread_demo.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{87AE9756-BAD2-4171-98F9-747E58A851DE}</ProjectGuid>
