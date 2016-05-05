@@ -9,7 +9,7 @@ Mutex network_demo_mutex;
 bool has_connect = false;
 NetworkID client_net_id = 0;
 
-class MyServerHandler : public INetworkHandler
+class MyServerNetworkHandler : public INetworkHandler
 {
  public:
   void OnListenFail(Port port)
@@ -56,7 +56,7 @@ class MyServerHandler : public INetworkHandler
   }
 };
 
-class MyClientHandler : public INetworkHandler
+class MyClientNetworkHandler : public INetworkHandler
 {
  public:
   void OnListenFail(Port port)
@@ -84,7 +84,7 @@ class MyClientHandler : public INetworkHandler
   void OnConnect(IPAddr ip, Port port, bool success, NetworkID net_id)
   {
     network_demo_mutex.Lock();
-    cout << "client OnConnect(" << ip << ", " << port << ")" << endl;
+    cout << "client OnConnect(" << ip << ", " << port << ", " << success << ")" << endl;
     network_demo_mutex.Unlock();
 
     has_connect = true;
@@ -111,7 +111,7 @@ class ServerTask : public IThreadTask
  public:
   void Run()
   {
-    MyServerHandler handler;
+    MyServerNetworkHandler handler;
     NetworkManager mgr;
     mgr.RegistHandler(&handler);
     mgr.SyncListen(9999);
@@ -127,7 +127,7 @@ int main()
 
   Timer::Sleep(1000);
 
-  MyClientHandler handler;
+  MyClientNetworkHandler handler;
   NetworkManager mgr;
   mgr.RegistHandler(&handler);
   mgr.SyncConnect("127.0.0.1", 9999);
@@ -135,10 +135,11 @@ int main()
   while (!has_connect)
     Timer::Sleep(1000);
 
-  for (int i = 0; i < 10; ++i)
+  const char *msg = "i love you very much~~~";
+  for (int i = 0; i < INT_MAX; ++i)
   {
-    mgr.Send(client_net_id, "i am client!", 12);
-    Timer::Sleep(1000);
+    mgr.Send(client_net_id, msg, i%24);
+    Timer::Sleep(10);
   }
 
   mgr.WaitAllThread();
