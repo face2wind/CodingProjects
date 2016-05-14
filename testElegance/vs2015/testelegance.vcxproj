@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\network_demo.cpp" />
+    <ClCompile Include="..\src\rpc_demo.cpp" />
     <ClCompile Include="..\src\thread_demo.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
