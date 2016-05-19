@@ -21,7 +21,7 @@ namespace network_demo {
 			network_demo_mutex.Unlock();
 		}
 
-		void OnAccept(IPAddr ip, Port port, NetworkID net_id)
+		void OnAccept(IPAddr ip, Port port, Port local_port, NetworkID net_id = 0)
 		{
 			network_demo_mutex.Lock();
 			cout << "server OnAccept(" << ip << ", " << port << ", " << net_id << ")" << endl;
@@ -36,14 +36,14 @@ namespace network_demo {
 			*/
 		}
 
-		void OnConnect(IPAddr ip, Port port, bool success, NetworkID net_id)
+		void OnConnect(IPAddr ip, Port port, Port local_port, bool success, NetworkID net_id = 0)
 		{
 			network_demo_mutex.Lock();
 			cout << "server OnConnect(" << ip << ", " << port << ")" << endl;
 			network_demo_mutex.Unlock();
 		}
 
-		void OnRecv(NetworkID net_id, char *data, int length)
+		void OnRecv(NetworkID net_id, const char *data, int length)
 		{
 			network_demo_mutex.Lock();
 			cout << "Server OnRecv(" << net_id << ", \"" << data << "\", " << length << ")" << endl;
@@ -61,6 +61,7 @@ namespace network_demo {
 	class MyClientNetworkHandler : public INetworkHandler
 	{
 	public:
+
 		void OnListenFail(Port port)
 		{
 			network_demo_mutex.Lock();
@@ -68,7 +69,7 @@ namespace network_demo {
 			network_demo_mutex.Unlock();
 		}
 
-		void OnAccept(IPAddr ip, Port port, NetworkID net_id)
+		void OnAccept(IPAddr ip, Port port, Port local_port, NetworkID net_id = 0)
 		{
 			network_demo_mutex.Lock();
 			cout << "client OnAccept(" << ip << ", " << port << ", " << net_id << ")" << endl;
@@ -83,7 +84,7 @@ namespace network_demo {
 			*/
 		}
 
-		void OnConnect(IPAddr ip, Port port, bool success, NetworkID net_id)
+		void OnConnect(IPAddr ip, Port port, Port local_port, bool success, NetworkID net_id = 0)
 		{
 			network_demo_mutex.Lock();
 			cout << "client OnConnect(" << ip << ", " << port << ", " << success << ")" << endl;
@@ -93,7 +94,7 @@ namespace network_demo {
 			client_net_id = net_id;
 		}
 
-		void OnRecv(NetworkID net_id, char *data, int length)
+		void OnRecv(NetworkID net_id, const char *data, int length)
 		{
 			network_demo_mutex.Lock();
 			cout << "client OnRecv(" << net_id << ", \"" << data << "\", " << length << ")" << endl;
