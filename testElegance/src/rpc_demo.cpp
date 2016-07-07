@@ -105,7 +105,7 @@ class ThreadDemoServerTask : public IThreadTask
 };
 }
 
-int main()
+int rpc_main()
 {
   using namespace rpc_demo;
 
@@ -123,5 +123,7 @@ int main()
   t.Join();
 
   cout<<"end ......"<<endl;
+
+  return 0;
 }
 

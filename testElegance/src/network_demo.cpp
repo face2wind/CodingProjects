@@ -6,122 +6,122 @@ using namespace face2wind;
 
 namespace network_demo {
 
-	Mutex network_demo_mutex;
+Mutex network_demo_mutex;
 
-	bool has_connect = false;
-	NetworkID client_net_id = 0;
+bool has_connect = false;
+NetworkID client_net_id = 0;
 
-	class MyServerNetworkHandler : public INetworkHandler
-	{
-	public:
-		void OnListenFail(Port port)
-		{
-			network_demo_mutex.Lock();
-			cout << "server OnListenFail(" << port << ")" << endl;
-			network_demo_mutex.Unlock();
-		}
+class MyServerNetworkHandler : public INetworkHandler
+{
+ public:
+  void OnListenFail(Port port)
+  {
+    network_demo_mutex.Lock();
+    cout << "server OnListenFail(" << port << ")" << endl;
+    network_demo_mutex.Unlock();
+  }
 
-		void OnAccept(IPAddr ip, Port port, Port local_port, NetworkID net_id = 0)
-		{
-			network_demo_mutex.Lock();
-			cout << "server OnAccept(" << ip << ", " << port << ", " << net_id << ")" << endl;
-			network_demo_mutex.Unlock();
-			/*
-			  char str[12] = "I Am Server";
-			  for (int i = 0; i < 2; ++i)
-			  {
-			  accepter1.Write(ip, port, str, 11);
-			  Timer::Sleep(1000);
-			  }
-			*/
-		}
+  void OnAccept(IPAddr ip, Port port, Port local_port, NetworkID net_id = 0)
+  {
+    network_demo_mutex.Lock();
+    cout << "server OnAccept(" << ip << ", " << port << ", " << net_id << ")" << endl;
+    network_demo_mutex.Unlock();
+    /*
+      char str[12] = "I Am Server";
+      for (int i = 0; i < 2; ++i)
+      {
+      accepter1.Write(ip, port, str, 11);
+      Timer::Sleep(1000);
+      }
+    */
+  }
 
-		void OnConnect(IPAddr ip, Port port, Port local_port, bool success, NetworkID net_id = 0)
-		{
-			network_demo_mutex.Lock();
-			cout << "server OnConnect(" << ip << ", " << port << ")" << endl;
-			network_demo_mutex.Unlock();
-		}
+  void OnConnect(IPAddr ip, Port port, Port local_port, bool success, NetworkID net_id = 0)
+  {
+    network_demo_mutex.Lock();
+    cout << "server OnConnect(" << ip << ", " << port << ")" << endl;
+    network_demo_mutex.Unlock();
+  }
 
-		void OnRecv(NetworkID net_id, const char *data, int length)
-		{
-			network_demo_mutex.Lock();
-			cout << "Server OnRecv(" << net_id << ", \"" << data << "\", " << length << ")" << endl;
-			network_demo_mutex.Unlock();
-		}
+  void OnRecv(NetworkID net_id, const char *data, int length)
+  {
+    network_demo_mutex.Lock();
+    cout << "Server OnRecv(" << net_id << ", \"" << data << "\", " << length << ")" << endl;
+    network_demo_mutex.Unlock();
+  }
 
-		void OnDisconnect(NetworkID net_id)
-		{
-			network_demo_mutex.Lock();
-			cout << "Server OnDisonnect(" << net_id << ")" << endl;
-			network_demo_mutex.Unlock();
-		}
-	};
+  void OnDisconnect(NetworkID net_id)
+  {
+    network_demo_mutex.Lock();
+    cout << "Server OnDisonnect(" << net_id << ")" << endl;
+    network_demo_mutex.Unlock();
+  }
+};
 
-	class MyClientNetworkHandler : public INetworkHandler
-	{
-	public:
+class MyClientNetworkHandler : public INetworkHandler
+{
+ public:
 
-		void OnListenFail(Port port)
-		{
-			network_demo_mutex.Lock();
-			cout << "client OnListenFail(" << port << ")" << endl;
-			network_demo_mutex.Unlock();
-		}
+  void OnListenFail(Port port)
+  {
+    network_demo_mutex.Lock();
+    cout << "client OnListenFail(" << port << ")" << endl;
+    network_demo_mutex.Unlock();
+  }
 
-		void OnAccept(IPAddr ip, Port port, Port local_port, NetworkID net_id = 0)
-		{
-			network_demo_mutex.Lock();
-			cout << "client OnAccept(" << ip << ", " << port << ", " << net_id << ")" << endl;
-			network_demo_mutex.Unlock();
-			/*
-			  char str[12] = "I Am Server";
-			  for (int i = 0; i < 2; ++i)
-			  {
-			  accepter1.Write(ip, port, str, 11);
-			  Timer::Sleep(1000);
-			  }
-			*/
-		}
+  void OnAccept(IPAddr ip, Port port, Port local_port, NetworkID net_id = 0)
+  {
+    network_demo_mutex.Lock();
+    cout << "client OnAccept(" << ip << ", " << port << ", " << net_id << ")" << endl;
+    network_demo_mutex.Unlock();
+    /*
+      char str[12] = "I Am Server";
+      for (int i = 0; i < 2; ++i)
+      {
+      accepter1.Write(ip, port, str, 11);
+      Timer::Sleep(1000);
+      }
+    */
+  }
 
-		void OnConnect(IPAddr ip, Port port, Port local_port, bool success, NetworkID net_id = 0)
-		{
-			network_demo_mutex.Lock();
-			cout << "client OnConnect(" << ip << ", " << port << ", " << success << ")" << endl;
-			network_demo_mutex.Unlock();
+  void OnConnect(IPAddr ip, Port port, Port local_port, bool success, NetworkID net_id = 0)
+  {
+    network_demo_mutex.Lock();
+    cout << "client OnConnect(" << ip << ", " << port << ", " << success << ")" << endl;
+    network_demo_mutex.Unlock();
 
-			has_connect = true;
-			client_net_id = net_id;
-		}
+    has_connect = true;
+    client_net_id = net_id;
+  }
 
-		void OnRecv(NetworkID net_id, const char *data, int length)
-		{
-			network_demo_mutex.Lock();
-			cout << "client OnRecv(" << net_id << ", \"" << data << "\", " << length << ")" << endl;
-			network_demo_mutex.Unlock();
-		}
+  void OnRecv(NetworkID net_id, const char *data, int length)
+  {
+    network_demo_mutex.Lock();
+    cout << "client OnRecv(" << net_id << ", \"" << data << "\", " << length << ")" << endl;
+    network_demo_mutex.Unlock();
+  }
 
-		void OnDisconnect(NetworkID net_id)
-		{
-			network_demo_mutex.Lock();
-			cout << "client OnDisonnect(" << net_id << ")" << endl;
-			network_demo_mutex.Unlock();
-		}
-	};
+  void OnDisconnect(NetworkID net_id)
+  {
+    network_demo_mutex.Lock();
+    cout << "client OnDisonnect(" << net_id << ")" << endl;
+    network_demo_mutex.Unlock();
+  }
+};
 
-	class ServerTask : public IThreadTask
-	{
-	public:
-		void Run()
-		{
-			MyServerNetworkHandler handler;
-			NetworkManager mgr;
-			mgr.RegistHandler(&handler);
-			mgr.SyncListen(9999);
+class ServerTask : public IThreadTask
+{
+ public:
+  void Run()
+  {
+    MyServerNetworkHandler handler;
+    NetworkManager mgr;
+    mgr.RegistHandler(&handler);
+    mgr.SyncListen(9999);
 
-			mgr.WaitAllThread();
-		}
-	};
+    mgr.WaitAllThread();
+  }
+};
 
 }
 
@@ -129,7 +129,7 @@ namespace network_demo {
 int network_demo_main()
 {
 
-using namespace network_demo;
+  using namespace network_demo;
 
   Thread t;
   t.Run(new ServerTask());
