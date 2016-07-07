@@ -109,6 +109,8 @@ int rpc_main()
 {
   using namespace rpc_demo;
 
+  DebugMessage::GetInstance().SetOnshowType(DebugMessageType::BASE_NETWORK, true);
+  
   Thread t;
   t.Run(new ThreadDemoServerTask());
 
