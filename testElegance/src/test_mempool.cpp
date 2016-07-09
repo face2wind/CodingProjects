@@ -4,20 +4,20 @@
 using namespace std;
 using namespace face2wind;
 
-struct AA
+struct AAA
 {
-  char data[128];
+	char data[128];
 };
 
 int main()
 {
-	MemoryPoolManager mp_mgr;
+	MemoryPool pool(sizeof(AAA));
 	int LOOP_TIMES = 1000000;
 
 	long long pre_time = Timer::GetNowTimeMS();
   for (int i = 0; i < LOOP_TIMES; ++ i)
   {
-	  AA *ptr = new AA();
+	  AAA *ptr = new AAA();
 	  delete ptr;
   }
   cout << "new delete loop time : " << Timer::GetNowTimeMS() - pre_time << " ms" << endl;
@@ -25,10 +25,10 @@ int main()
   pre_time = Timer::GetNowTimeMS();
   for (int i = 0; i < LOOP_TIMES; ++i)
   {
-	  AA *ptr = (AA *)mp_mgr.Alloc(sizeof(AA));
-	  mp_mgr.Free(ptr);
+	  AAA *ptr = (AAA *)pool.Alloc();
+	  pool.Free(ptr);
   }
-  cout << "mempool loop time : " << Timer::GetNowTimeMS() - pre_time << " ms" << endl;
+  cout << "mempool 222 loop time : " << Timer::GetNowTimeMS() - pre_time << " ms" << endl;
 
   return 0;
 }
