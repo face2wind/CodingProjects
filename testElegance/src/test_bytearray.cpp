@@ -8,7 +8,7 @@ using namespace face2wind;
 
 struct AAA
 {
-  AAA() : c1(-10), c2(12), s1(-20), s2(24), i1(-12345), i2(23456), f1(123.456f),
+  AAA() : c1(-10), c2(12), s1(-20), s2(24), f1(123.456f), i1(-12345), i2(23456), 
           d1(-12345.6789), ll1(-88888), ll2(99999), str("I love you!") {}
 
   char c1;
@@ -55,27 +55,28 @@ int main()
 
   by.WriteObject(&a, sizeof(AAA));
   AAA *b = (AAA*)by.ReadObject(sizeof(AAA));
+  cout << b->d1 << endl;
 
- int LOOP_TIMES = 10000;
+  int LOOP_TIMES = 10000;
  
- long long pre_time = Timer::GetNowTimeMS();
- for (int i = 0; i < LOOP_TIMES; ++ i)
- {
-   AAA a;
-   ByteArray by;
-   by.WriteInt8(a.c1);
-   by.WriteUint8(a.c2);
-   by.WriteInt16(a.s1);
-   by.WriteUint16(a.s2);
-   by.WriteFloat(a.f1);
-   by.WriteInt32(a.i1);
-   by.WriteUint32(a.i2);
-   by.WriteDouble(a.d1);
-   by.WriteInt64(a.ll1);
-   by.WriteUint64(a.ll2);
-   by.WriteString(a.str);
- }
- cout << "bytearray loop time : " << Timer::GetNowTimeMS() - pre_time << " ms" << endl;
+  long long pre_time = Timer::GetNowTimeMS();
+  for (int i = 0; i < LOOP_TIMES; ++ i)
+  {
+    AAA a;
+    ByteArray by;
+    by.WriteInt8(a.c1);
+    by.WriteUint8(a.c2);
+    by.WriteInt16(a.s1);
+    by.WriteUint16(a.s2);
+    by.WriteFloat(a.f1);
+    by.WriteInt32(a.i1);
+    by.WriteUint32(a.i2);
+    by.WriteDouble(a.d1);
+    by.WriteInt64(a.ll1);
+    by.WriteUint64(a.ll2);
+    by.WriteString(a.str);
+  }
+  cout << "bytearray loop time : " << Timer::GetNowTimeMS() - pre_time << " ms" << endl;
 
   pre_time = Timer::GetNowTimeMS();
   for (int i = 0; i < LOOP_TIMES; ++i)
