@@ -18,9 +18,6 @@ public:
 
   virtual void Serialize(ByteArray &collector) const;
   virtual void Unserialize(ByteArray &collector);
-
-protected:
-  virtual SerializeBase * Clone() const { return new CSRegisterAccount(); }
   virtual const std::string GetTypeName() const { return "CSRegisterAccount"; }
 };
 
@@ -32,9 +29,6 @@ public:
 
   virtual void Serialize(ByteArray &collector) const;
   virtual void Unserialize(ByteArray &collector);
-
-protected:
-  virtual SerializeBase * Clone() const { return new CSLogin(); }
   virtual const std::string GetTypeName() const { return "CSLogin"; }
 };
 
@@ -45,9 +39,6 @@ public:
 
   virtual void Serialize(ByteArray &collector) const;
   virtual void Unserialize(ByteArray &collector);
-
-protected:
-  virtual SerializeBase * Clone() const { return new SCLoginResult(); }
   virtual const std::string GetTypeName() const { return "SCLoginResult"; }
 };
 
@@ -59,9 +50,6 @@ public:
 
   virtual void Serialize(ByteArray &collector) const;
   virtual void Unserialize(ByteArray &collector);
-
-protected:
-  virtual SerializeBase * Clone() const { return new TestProto(); }
   virtual const std::string GetTypeName() const { return "TestProto"; }
 };
 
