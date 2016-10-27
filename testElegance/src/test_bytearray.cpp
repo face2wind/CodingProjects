@@ -54,11 +54,11 @@ struct memtest3
 };
 #pragma pack(pop)
 
-int main()
+int test_bytearray_main()
 {
   AAA a;
 
-  ByteArray by;
+  QueueByteArray by;
   by.WriteInt8(a.c1);
   by.WriteUint8(a.c2);
   by.WriteInt16(a.s1);
@@ -93,7 +93,7 @@ int main()
   for (int i = 0; i < LOOP_TIMES; ++ i)
   {
     AAA a;
-    ByteArray by;
+    QueueByteArray by;
     by.WriteInt8(a.c1);
     by.WriteUint8(a.c2);
     by.WriteInt16(a.s1);
